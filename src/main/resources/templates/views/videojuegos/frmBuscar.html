@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:replace="~{plantilla/template :: head}">
+    <!-- Agregar Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+</head>
+
+<body>
+<header th:replace="~{plantilla/template :: header}"></header>
+<div class="container" style="min-height: calc(100vh - 170px); padding-bottom: 70px;">
+    <div class="card bg-light">
+        <div class="card-header bg-dark text-white" th:text="${titulo}"></div>
+        <div class="card-body">
+            <form th:action="@{/views/videojuegos/cargar}" method="get">
+                <div class="form-group row">
+                    <label for="producto" class="form-label col-md-2">Seleccionar Producto:</label>
+                    <select name="productoId" class="form-control form-control-sm col-md-6" id="producto" required>
+                        <option value="">Seleccione un producto</option>
+                        <option th:each="producto : ${productos}"
+                                th:value="${producto.id}"
+                                th:text="${producto.codigo} + ' - ' + ${producto.nombre}">
+                        </option>
+                    </select>
+                    <div class="invalid-feedback">Debe seleccionar un producto.</div>
+                </div>
+                <div class="form-group row">
+                    <button type="submit" class="btn btn-success btn-sm" title="Buscar producto">Buscar</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+<footer th:replace="~{plantilla/template :: footer}"></footer>
+
+<!-- Agregar Bootstrap JS -->
+<script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.2/dist/js/bootstrap.bundle.min.js"></script>
+
+</body>
+</html>

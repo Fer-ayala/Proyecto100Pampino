@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:replace="~{plantilla/template :: head}">
+    <!-- Agregar Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+</head>
+
+<body>
+<header th:replace="~{plantilla/template :: header}"></header>
+<div class="container" style="min-height: calc(100vh - 170px); padding-bottom: 70px;">
+    <div class="card bg-light">
+        <div class="card-header bg-dark text-white" th:text="${titulo}"></div>
+        <div class="card-body">
+            <!-- Agregar el atributo 'novalidate' al form si no deseas que HTML5 valide automáticamente -->
+            <form th:action="@{/views/productos/save}" th:object="${producto}" method="post" >
+                <div class="form-group row">
+                    <label for="codigo" class="form-label col-md-2">Código de Producto:</label>
+                    <input type="hidden" th:field="*{id}">
+                    <input type="text" th:field="*{codigo}" class="form-control form-control-sm col-md-6" id="codigo"
+                           placeholder="Código del Videojuego..." required>
+                    <div class="invalid-feedback">El campo "Código" no puede estar vacío.</div>
+                </div>
+                <div class="form-group row">
+                    <label for="nombre" class="form-label col-md-2">Nombre del Producto:</label>
+                    <input type="text" th:field="*{nombre}" class="form-control form-control-sm col-md-6" id="nombre"
+                           placeholder="Nombre del Videojuego..." required>
+                    <div class="invalid-feedback">El campo "Nombre" no puede estar vacío.</div>
+                </div>
+                <div class="form-group row">
+                    <label for="precio" class="form-label col-md-2">Precio del Producto:</label>
+                    <input type="number" step="0.01" th:field="*{precio}" class="form-control form-control-sm col-md-6" id="precio"
+                           placeholder="Precio del Videojuego..." min="0" required>
+                    <div class="invalid-feedback">El campo "Precio" debe ser un número válido y no negativo.</div>
+                </div><br>
+                <div class="card-footer bg-dark">
+                    <input type="submit" class="btn btn-primary btn-sm" value="Guardar" />
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+<footer th:replace="~{plantilla/template :: footer}"></footer>
+
+<!-- Agregar Bootstrap JS -->
+<script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.2/dist/js/bootstrap.bundle.min.js"></script>
+
+<script>
+    // Activar validación de Bootstrap al enviar el formulario
+    (function() {
+        'use strict';
+        window.addEventListener('load', function() {
+            // Obtener todos los formularios con clases de validación de Bootstrap
+            var forms = document.getElementsByClassName('needs-validation');
+            // Iterar sobre ellos y prevenir el envío si no son válidos
+            var validation = Array.prototype.filter.call(forms, function(form) {
+                form.addEventListener('submit', function(event) {
+                    if (form.checkValidity() === false) {
+                        event.preventDefault();
+                        event.stopPropagation();
+                    }
+                    form.classList.add('was-validated');
+                }, false);
+            });
+        }, false);
+    })();
+</script>
+
+</body>
+</html>

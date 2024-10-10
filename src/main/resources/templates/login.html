@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<!--<head th:replace="~{plantilla/template2 :: head}">-->
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Iniciar Sesión</title>
+	<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+	<!-- MaterializeCSS -->
+	<link href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css" rel="stylesheet">
+	<style>
+		body {
+            display: flex;
+            min-height: 100vh;
+            flex-direction: column;
+            background: #f5f5f5;
+        }
+        main {
+            flex: 1 0 auto;
+        }
+        .input-field input:focus + label {
+            color: #e91e63 !important;
+        }
+        .input-field input:focus {
+            border-bottom: 2px solid #e91e63 !important;
+            box-shadow: none !important;
+        }
+        .container {
+            margin-top: 50px;
+        }
+
+        .input-field input[type=date]:focus + label,
+        .input-field input[type=text]:focus + label,
+        .input-field input[type=email]:focus + label,
+        .input-field input[type=password]:focus + label {
+          color: #26a69a;
+        }
+
+        .input-field input[type=date]:focus,
+        .input-field input[type=text]:focus,
+        .input-field input[type=email]:focus,
+        .input-field input[type=password]:focus {
+          border-bottom: 2px solid #26a69a;
+          box-shadow: none;
+        }
+
+	</style>
+</head>
+<body>
+<!--<header th:replace="~{plantilla/template2 :: header}"></header>-->
+<main>
+	<div class="container">
+		<center>
+			<img class="responsive-img" style="width: 250px;" src="https://i.imgur.com/ax0NCsK.gif" alt="Logo" />
+			<div class="section"></div>
+			<h5 class="indigo-text">Inicio de Sesión</h5>
+			<div class="section"></div>
+
+			<div class="row">
+				<div class="col s12 m8 offset-m2 l4 offset-l4">
+					<div class="card z-depth-3">
+						<div class="card-content">
+							<form th:action="@{/login}" method="post">
+								<div class="input-field">
+									<i class="material-icons prefix">account_circle</i>
+									<input id="username" type="text" name="username" class="validate" required>
+									<label for="username">Ingresa tu nombre de usuario</label>
+								</div>
+								<div class="input-field">
+									<i class="material-icons prefix">key</i>
+									<input id="password" type="password" name="password" class="validate" required>
+									<label for="password">Ingresa tu contraseña</label>
+								</div>
+								<br>
+								<div class="center">
+									<button type="submit" class="btn waves-effect waves-light indigo">Ingresar</button>
+								</div>
+								<br>
+								<label style='float: right;'>
+									<a class='pink-text' href='#!'><b>Olvidaste tu contraseña?</b></a>
+								</label>
+								<br>
+							</form>
+						</div>
+						<div class="card-action center l4 offset-l4">
+							<a href="#!" class="blue-text">Crear cuenta</a>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="section"></div>
+		</center>
+	</div>
+</main>
+<!--<footer th:replace="~{plantilla/template2 :: footer}"></footer>-->
+<!-- Materialize JavaScript -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+</body>
+</html>
