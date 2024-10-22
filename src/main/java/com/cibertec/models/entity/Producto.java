@@ -4,6 +4,7 @@ import jakarta.persistence.*;
 
 import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.NotNull;
+import java.io.Serial;
 import java.io.Serializable;
 import java.math.BigDecimal;
 
@@ -12,6 +13,7 @@ import java.math.BigDecimal;
 @NamedQuery(name="Producto.findAll", query="SELECT e FROM Producto e")
 public class Producto implements Serializable {
 
+    @Serial
     private static final long serialVersionUID = 1L;
 
     @Id
@@ -30,6 +32,17 @@ public class Producto implements Serializable {
     @Column(name = "precio")
     @NotNull
     private BigDecimal precio;
+
+    @Column(name = "stock")
+    private int stock;
+
+    public int getStock() {
+        return stock;
+    }
+
+    public void setStock(int stock) {
+        this.stock = stock;
+    }
 
     public Producto() {
     }
