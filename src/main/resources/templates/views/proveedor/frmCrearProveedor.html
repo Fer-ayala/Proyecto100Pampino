@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:replace="~{plantilla/template :: head}">
+    <!-- Agregar Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+</head>
+
+<body>
+<header th:replace="~{plantilla/template :: header}"></header>
+<div class="container" style="min-height: calc(100vh - 170px); padding-bottom: 70px;">
+    <div class="card bg-light">
+        <div class="card-header bg-dark text-white" th:text="${titulo}"></div>
+        <div class="card-body">
+            <!-- Agregar el atributo 'novalidate' al form si no deseas que HTML5 valide automáticamente -->
+            <form th:action="@{/views/proveedor/save}" th:object="${proveedor}" method="post" >
+                <div class="form-group row">
+                    <label for="ruc" class="form-label col-md-2">RUC de proveedor:</label>
+                    <input type="hidden" th:field="*{id}">
+                    <input type="text" th:field="*{ruc}" class="form-control form-control-sm col-md-6" id="ruc"
+                           placeholder="RUC de Empresa..." required>
+                    <div class="invalid-feedback">El campo "RUC" no puede estar vacío.</div>
+                </div>
+                <div class="form-group row">
+                    <label for="nombre" class="form-label col-md-2">Nombre deL proveedor:</label>
+                    <input type="text" th:field="*{nombre}" class="form-control form-control-sm col-md-6" id="nombre"
+                           placeholder="Nombre del proveedor..." required>
+                    <div class="invalid-feedback">El campo "Nombre" no puede estar vacío.</div>
+                </div>
+                <br>
+                <div class="card-footer bg-dark">
+                    <input type="submit" class="btn btn-primary btn-sm" value="Guardar" />
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+<footer th:replace="~{plantilla/template :: footer}"></footer>
+
+<!-- Agregar Bootstrap JS -->
+<script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.2/dist/js/bootstrap.bundle.min.js"></script>
+
+<script>
+    // Activar validación de Bootstrap al enviar el formulario
+    (function() {
+        'use strict';
+        window.addEventListener('load', function() {
+            // Obtener todos los formularios con clases de validación de Bootstrap
+            var forms = document.getElementsByClassName('needs-validation');
+            // Iterar sobre ellos y prevenir el envío si no son válidos
+            var validation = Array.prototype.filter.call(forms, function(form) {
+                form.addEventListener('submit', function(event) {
+                    if (form.checkValidity() === false) {
+                        event.preventDefault();
+                        event.stopPropagation();
+                    }
+                    form.classList.add('was-validated');
+                }, false);
+            });
+        }, false);
+    })();
+</script>
+
+</body>
+</html>

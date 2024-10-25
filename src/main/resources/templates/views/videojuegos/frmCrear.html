@@ -14,39 +14,34 @@
 			<!-- Agregar el atributo 'novalidate' al form si no deseas que HTML5 valide automáticamente -->
 			<form th:action="@{/views/videojuegos/save}" th:object="${videojuego}" method="post" >
 				<div class="form-group row">
-					<label for="codigo" class="form-label col-md-2">Código de Videojuego:</label>
+					<label for="codigo" class="form-label col-md-2">Código de Producto:</label>
 					<input type="hidden" th:field="*{id}">
 					<input type="text" th:field="*{codigo}" class="form-control form-control-sm col-md-6" id="codigo"
 						   placeholder="Código del Producto..." required>
 					<div class="invalid-feedback">El campo "Código" no puede estar vacío.</div>
 				</div>
 				<div class="form-group row">
-					<label for="nombre" class="form-label col-md-2">Nombre del Videojuego:</label>
+					<label for="nombre" class="form-label col-md-2">Nombre del Producto:</label>
 					<input type="text" th:field="*{nombre}" class="form-control form-control-sm col-md-6" id="nombre"
 						   placeholder="Nombre del Producto..." required>
 				</div>
 				<div class="form-group row">
-					<label for="consola" class="form-label col-md-2">Consola del Videojuego:</label>
-					<input type="text" th:field="*{consola}" class="form-control form-control-sm col-md-6" id="consola"
-						   placeholder="Consola del Producto..." required>
-				</div><br>
-				<div class="form-group row">
-					<label for="genero" class="form-label col-md-2">Género del Videojuego:</label>
+					<label for="genero" class="form-label col-md-2">Género del Producto:</label>
 					<input type="text" th:field="*{genero}" class="form-control form-control-sm col-md-6" id="genero"
 						   placeholder="Género del Producto..." required>
 				</div><br>
 				<div class="form-group row">
-					<label for="descripcion" class="form-label col-md-2">Descripción del Videojuego:</label>
+					<label for="descripcion" class="form-label col-md-2">Descripción del Producto:</label>
 					<input type="text" th:field="*{descripcion}" class="form-control form-control-sm col-md-6" id="descripcion"
 						   placeholder="Descripción del Producto..." required>
 				</div><br>
 				<div class="form-group row">
-					<label for="stock" class="form-label col-md-2">Stock del Videojuego:</label>
+					<label for="stock" class="form-label col-md-2">Stock del Producto:</label>
 					<input type="number" th:field="*{stock}" class="form-control form-control-sm col-md-6" id="stock"
 						   placeholder="Stock del Producto..." min="0" required>
 				</div><br>
 				<div class="form-group row">
-					<label for="precio" class="form-label col-md-2">Precio del Videojuego:</label>
+					<label for="precio" class="form-label col-md-2">Precio del Producto:</label>
 					<input type="number" step="0.01" th:field="*{precio}" class="form-control form-control-sm col-md-6" id="precio"
 						   placeholder="Precio del Producto..." min="0" required>
 				</div><br>
