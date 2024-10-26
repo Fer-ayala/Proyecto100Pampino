@@ -11,7 +11,7 @@
     <div class="card bg-light">
         <div class="card-header bg-dark text-white" th:text="${titulo}"></div>
         <div class="card-body">
-            <form th:action="@{/views/videojuegos/cargar}" method="get">
+            <form th:action="@{/views/historial/cargar}" method="get">
                 <div class="form-group row">
                     <label for="producto" class="form-label col-md-2">Seleccionar Producto:</label>
                     <select name="productoId" class="form-control form-control-sm col-md-6" id="producto" required>

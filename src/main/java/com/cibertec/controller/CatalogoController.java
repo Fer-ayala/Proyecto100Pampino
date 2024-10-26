@@ -4,8 +4,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
-import com.cibertec.models.entity.Videojuego;
-import com.cibertec.models.service.IVideojuegoService;
+import com.cibertec.models.entity.Historial;
+import com.cibertec.models.service.HistorialService;
 
 import java.util.List;
 
@@ -13,14 +13,14 @@ import java.util.List;
 public class CatalogoController {
 	
 	 	@Autowired
-	    private IVideojuegoService videojuegoService;
+	    private HistorialService videojuegoService;
 
 	    @GetMapping("/catalogo")
 	    public String mostrarCatalogo(Model model) {
-	        List<Videojuego> videojuegos = videojuegoService.listarTodos();
+	        List<Historial> historials = videojuegoService.listarTodos();
 	        
 	        model.addAttribute("titulo", "Catálogo de Videojuegos");
-	        model.addAttribute("videojuegos", videojuegos);
+	        model.addAttribute("videojuegos", historials);
 	        
 	        return "views/videojuegos/catalogo";
 	    }
